@@ -1,11 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://wwww.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate = ~{layout}>
     <head>
+        <style>
+
+            
+            .btn1 {
+                padding: 0.7em;
+                padding-left: 1em;
+                padding-right: 1em;
+                background-color: whitesmoke;
+                border-radius: 10px;
+                border: none;
+                color: black;
+                transition: 0.4s ease-in-out;
+                box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1px;
+                width: 100px;
+                text-align: center;
+                margin-top: 30px;
+                margin-left: 30px;
+                text-decoration: none;
+            }
+
+            .btn1:hover {
+                background-color: #134B70;
+                color:white;
+            }
+            
+            .td1 td{
+                margin: 14px;
+                padding:14px;
+                text-align: center;
+                
+            }
+
+            .th1 th{
+                color:#070A52;
+                text-align: center
+            }
+          
+        </style>
     </head>
-    <body>
-        
-        
-        
-        
+
+    <body layout:fragment = "body">
+        <a type="button" class="btn1" th:href="@{/User/GetCashier}">Cajero</a>
+        <div class="container table-responsive" style="display: flex; justify-content: center; margin-top:50px;">
+            <table class="table table-hover table-lg">
+                <thead class ="thead">
+                    <tr class = "th1">
+                        <th>Id_user</th>
+                        <th>Nombre</th>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>Saldo</th>
+                        <th>Cuenta</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="Usuarios : ${listaUsers}" class = "td1">
+                        <td th:text="${Usuarios.Id_user}"></td>
+                        <td th:text="${Usuarios.Nombre}"></th>
+                        <td th:text="${Usuarios.Username}"></td>
+                        <td th:text="${Usuarios.Password}"></td>
+                        <td th:text="${Usuarios.Saldo}"></td>
+                        <td><a class="btn" th:href="@{/User/Card/{Id_user}(Id_user = ${Usuarios.Id_user})}"><i class="bi bi-cash-coin"></i> </a></td>
+
+                    </tr>   
+                </tbody>
+            </table>
+        </div>
+
     </body>
 </html>
+

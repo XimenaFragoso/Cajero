@@ -3,30 +3,21 @@
       xmlns:layout="http://wwww.ultraq.net.nz/thymeleaf/layout"
       layout:decorate = ~{layout}>
     <head>
-
-
-
         <style>
-
-
-
-
             .form {
                 display: flex;
                 flex-direction:column;
                 gap: 10px;
-
-
                 width:400px;
-                height: 500px;
+                height: 600px;
                 padding: 2.5em;
                 background-color:white;
                 border-radius: 25px;
                 transition: .4s ease-in-out;
                 box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 2px;
                 justify-content:center;
-                /*                align-items: center;*/
-                margin-top: 90px;
+                align-items: center;
+                gap:10px;
             }
 
             .form:hover {
@@ -34,29 +25,25 @@
                 box-shadow: 4px 4px 0px #969696;
             }
 
-            p{
-                display:flex;
-                justify-content:center;
-            }
-
             .heading {
                 color: black;
                 text-align: center;
                 font-weight: bold;
-                padding-bottom: 20px;
             }
 
-            .form .input {
-                border-radius: 5px;
-                border: 1px solid whitesmoke;
-                background-color: whitesmoke;
-                outline: none;
-                padding: 0.7em;
-                transition: .4s ease-in-out;
+            .td1 td{
+                margin: 9px;
+                padding:9px;
+                text-align: center
 
             }
 
-            .form .btn {
+            .th1 th{
+                color:#070A52;
+                text-align: center
+            }
+
+            .btn1 {
                 padding: 0.7em;
                 padding-left: 1em;
                 padding-right: 1em;
@@ -67,36 +54,50 @@
                 transition: 0.4s ease-in-out;
                 box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1px;
                 width: 100px;
-                margin: 10px;
                 text-align: center;
+                margin-top: 30px;
+                margin-left: 30px;
+                text-decoration: none;
             }
 
-            .btn:hover {
+            .btn1:hover {
                 background-color: #134B70;
                 color:white;
-
             }
 
-            .row {
-                display: flex;
-                justify-content: center; /* Centra los botones dentro de la fila */
-                gap: 10px; /* Espacio entre los botones */
-            }
+
 
         </style>
+
     </head>
     <body layout:fragment = "body">
-        <div style="display: flex; justify-content: center;">
+        <a type="button" class="btn1">Rellenar</a>
 
+        <div style="display: flex; justify-content: center;">
             <form class="form">
                 <h1 class="heading">BankSite</h1>
 
-                <p class="card-text" th:text="|Bienvenido ${User.Nombre}|"></p> 
-                <p class="card-text" th:text="|Saldo: ${User.Saldo}|"></p> 
-                <div class ="row">
-                    <a class="btn" th:href="@{/User/Retiro}">Retirar</a>
-                    <a class="btn">Consultar</a>
-                </div>
+                <table class="table table-borderless">
+                    <thead>
+                        <tr class ="th1">
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each = "Cajero : ${Denominacion}" class ="td1" >
+                            <td th:text="${Cajero.Id_Denominacion}"></th>
+                            <td th:text="${Cajero.Nombre}"></td>
+                            <td th:text="${Cajero.Tipo.Nombre}"></td>
+                            <td th:text="${Cajero.Cantidad}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
             </form>
 
         </div>

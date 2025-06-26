@@ -17,11 +17,14 @@ public class Denominacion {
     private int Id_Denominacion;
 
     @Column(name = "nombre")
-    private String Nombre;
+    private double Nombre;
+    
+    @Column(name = "cantidad")
+    private double Cantidad; 
     
     @JoinColumn(name = "id_tipo")
     @ManyToOne
-    public Tipo Tipo;
+    public Tipo Tipo;    
 
     public int getId_Denominacion() {
         return Id_Denominacion;
@@ -31,12 +34,19 @@ public class Denominacion {
         this.Id_Denominacion = Id_Denominacion;
     }
 
-    public String getNombre() {
+    public double getNombre() {
         return Nombre;
     }
 
-    public void setNombre(String Nombre) {
+    public void setNombre(double Nombre) {
         this.Nombre = Nombre;
     }
 
+    public double getCantidad() {
+        return Cantidad;
+    }
+    
+    public void setCantidad(double Cantidad) {
+        this.Cantidad = Cantidad;
+    }
 }

@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Users {
@@ -24,7 +26,11 @@ public class Users {
     private String Password;
 
     @Column(name = "saldo")
-    private int Saldo;
+    private double Saldo;
+
+    @JoinColumn(name = "id_roll")
+    @ManyToOne
+    public Rolles rolles;
 
     public int getId_user() {
         return Id_user;
@@ -58,12 +64,16 @@ public class Users {
         this.Password = Password;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return Saldo;
     }
 
-    public void setSaldo(int Saldo) {
+    public void setSaldo(double Saldo) {
         this.Saldo = Saldo;
+    }
+
+    public void getSaldo(double d) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
